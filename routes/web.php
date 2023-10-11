@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')->controller(DashboardController::class)->group(function () {
-    Route::get('', 'home')->name('dasboard.home');
-});
+Route::prefix('dashboard')
+    ->group(function () {
+        Route::get('', [DashboardController::class, 'beranda'])->name('dashboard.beranda');
+
+        Route::prefix('user')
+            ->controller(UserController::class)
+            ->group(function () {
+                Route::get('', 'index')->name('dashboard.user.index');
+            });
+    });
