@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     /**
-     * Get halaman home pada dashboard.
+     * Tampilkan halaman beranda pada dashboard.
      */
-    public function home()
+    public function beranda()
     {
         return view('pages.dashboard.home.page-home');
     }
