@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-bold text-2xl;
+  }
+}
+
+@layer components {
+  /* sidebar */
+  .sidebar {
+    @apply w-64 fixed left-0 inset-y-0 md:flex flex-col bg-primary-500 hidden;
+
+    .sidebar-link {
+      @apply px-4 py-2 rounded-md mx-auto text-sm font-bold flex items-center space-x-3;
+      @apply hover:bg-gray-200 hover:text-primary-600 text-white;
+    }
+
+    .sidebar-link.active {
+      @apply bg-white !text-primary-500;
+    }
+  }
+
+  .card {
+    @apply px-4 py-2.5 rounded-lg shadow-md bg-white;
+  }
+
+  /* table */
+  .table {
+    @apply w-full;
+
+    th,td {
+      @apply px-4 py-2 border-b
+    }
+  }
+
+  /* button */
+  .btn {
+    @apply text-sm px-4 py-2 rounded font-medium;
+  }
+  .btn-primary {
+    @apply bg-primary-500 text-white;
+  }
+}
