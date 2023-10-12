@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -59,15 +59,23 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('pages.dashboard.user.page-update', ['user' => $user]);
     }
 
     /**
      * Edit data pengguna.
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
+        $validated = $request->validated();
+
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->save();
+
+        return redirect()
+            ->route('dashboard.user.index')
+            ->with(['message' => 'data pengguna ' . $user->name . ' berhasil diubah']);
     }
 
     /**

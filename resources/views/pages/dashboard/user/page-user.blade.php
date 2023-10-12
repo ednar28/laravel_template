@@ -14,6 +14,7 @@
                 <th class="text-left">Nama</th>
                 <th class="text-left">Email</th>
                 <th class="text-left">Dibuat</th>
+                <th class="w-px"></th>
             </thead>
             <tbody>
                 @foreach ($users as $user)
@@ -22,6 +23,16 @@
                     <td class="text-left">{{ $user->name }}</td>
                     <td class="text-left">{{ $user->email }}</td>
                     <td class="text-left">{{ $user->created_at->diffForHumans() }}</td>
+                    <td class="w-px whitespace-nowrap">
+                        <div class="flex items-center space-x-2">
+                            <a class="btn-icon btn-edit" href="{{ route('dashboard.user.edit', ['user' => $user]) }}">
+                                <x-far-edit class="icon" />
+                            </a>
+                            <button class="btn-icon btn-danger">
+                                <x-far-trash-alt class="icon" />
+                            </button>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -29,5 +29,7 @@ Route::prefix('dashboard')
                 Route::get('', 'index')->name('dashboard.user.index');
                 Route::get('buat', 'create')->name('dashboard.user.create');
                 Route::post('', 'store')->name('dashboard.user.store');
+                Route::get('{user}/ubah', 'edit')->name('dashboard.user.edit');
+                Route::put('{user}', 'update')->name('dashboard.user.update');
             });
     });
