@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.page-layout')
 
 @section('pages')
-    <div>halaman form create user</div>
+<div>halaman form create user</div>
 @endsection
