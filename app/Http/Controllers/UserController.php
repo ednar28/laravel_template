@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,7 +31,7 @@ class UserController extends Controller
     /**
      * Simpan data pengguna.
      */
-    public function store(UserRequest $request)
+    public function store(UserStoreRequest $request)
     {
         $validated = $request->validated();
 
