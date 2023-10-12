@@ -41,7 +41,9 @@ class UserController extends Controller
         $user->password = bcrypt($validated['password']);
         $user->save();
 
-        return redirect()->route('dashboard.user.index')->with(['user' => $user]);
+        return redirect()
+            ->route('dashboard.user.index')
+            ->with(['message' => 'data pengguna ' . $user->name . ' berhasil disimpan']);
     }
 
     /**

@@ -14,7 +14,10 @@
         @include('layouts.dashboard.component-sidebar')
         <div class="md:ml-64 flex flex-col h-full">
             @include('layouts.dashboard.component-navbar')
+
             <div class="container pt-8 h-full overflow-auto">
+                @include('layouts.dashboard.component-alert')
+
                 @yield('pages')
             </div>
         </div>
