@@ -27,5 +27,7 @@ Route::prefix('dashboard')
             ->controller(UserController::class)
             ->group(function () {
                 Route::get('', 'index')->name('dashboard.user.index');
+                Route::get('buat', 'create')->name('dashboard.user.create');
+                Route::post('', 'store')->name('dashboard.user.store');
             });
     });

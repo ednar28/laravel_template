@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.page-layout')
 
 @section('pages')
-<div class="space-y-8 mb-8">
+<div class="wrapper-content">
     <div class="flex items-center justify-between">
         <h1>List Pengguna</h1>
-        <button class="btn btn-primary">Tambah</button>
+        <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary">Tambah</a>
     </div>
 
     <div class="card">

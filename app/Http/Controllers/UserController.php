@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -24,15 +25,23 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.user.page-create');
     }
 
     /**
      * Simpan data pengguna.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $user = new User();
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->password = bcrypt($validated['password']);
+        $user->save();
+
+        return redirect()->route('dashboard.user.index')->with(['user' => $user]);
     }
 
     /**
