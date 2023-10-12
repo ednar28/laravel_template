@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -11,6 +11,10 @@ class DashboardController extends Controller
      */
     public function beranda()
     {
-        return view('pages.dashboard.home.page-home');
+        $usersCount = User::count();
+
+        return view('pages.dashboard.home.page-home', [
+            'usersCount' => $usersCount,
+        ]);
     }
 }

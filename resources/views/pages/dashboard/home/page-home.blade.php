@@ -4,7 +4,7 @@
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
     <div class="p-6 shadow-md bg-white flex items-center justify-between rounded-lg">
         <div>
-            <div class="font-bold text-lg text-primary-500">169</div>
+            <div class="font-bold text-lg text-primary-500">{{ $usersCount }}</div>
             <div class="text-xs text-gray-400">
                 Pengguna
             </div>
