@@ -6,6 +6,20 @@
   h1 {
     @apply font-bold text-2xl;
   }
+
+  button {
+    -webkit-transition: background-color 400ms linear;
+    -moz-transition: background-color 400ms linear;
+    -o-transition: background-color 400ms linear;
+    -ms-transition: background-color 400ms linear;
+    transition: background-color 400ms linear;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply outline-none focus:outline-none;
+  }
 }
 
 @layer components {
@@ -38,9 +52,46 @@
 
   /* button */
   .btn {
-    @apply text-sm px-4 py-2 rounded font-medium;
+    @apply text-sm px-4 py-2 rounded font-medium text-center disabled:bg-gray-400 disabled:text-gray-600;
   }
   .btn-primary {
-    @apply bg-primary-500 text-white;
+    @apply bg-primary-500 text-white hover:bg-primary-600;
+  }
+  .btn-info {
+    @apply border border-primary-500 text-primary-500 hover:bg-gray-50;
+  }
+
+  /* form */
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-gray-900;
+  }
+  .form-input {
+    @apply border border-gray-300 text-gray-900 sm:text-sm rounded-lg enabled:bg-white;
+    @apply focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5;
+    @apply placeholder:text-gray-300;
+  }
+  .form-input.error{
+    @apply border-red-500;
+  }
+  .form-error {
+    @apply text-red-500 text-xs ml-1 mt-0.5;
+  }
+}
+
+@layer utilities {
+  .wrapper-content {
+    @apply space-y-8 mb-8;
+  }
+
+  .dot:after {
+    animation: dotty steps(1,end) 1s infinite;
+    content: '';
+  }
+  @keyframes dotty {
+    0%   { content: ''; }
+    25%  { content: '.'; }
+    50%  { content: '..'; }
+    75%  { content: '...'; }
+    100% { content: ''; }
   }
 }
