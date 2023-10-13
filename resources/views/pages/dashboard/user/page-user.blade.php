@@ -7,7 +7,7 @@
         <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary">Tambah</a>
     </div>
 
-    <div class="card">
+    <div class="card" x-data="{ deleteUser: null }">
         <table class="table">
             <thead>
                 <th class="text-right w-px">No</th>
@@ -28,7 +28,7 @@
                             <a class="btn-icon btn-edit" href="{{ route('dashboard.user.edit', ['user' => $user]) }}">
                                 <x-far-edit class="icon" />
                             </a>
-                            <button class="btn-icon btn-danger">
+                            <button class="btn-icon btn-danger" x-on:click="deleteUser = {{$user}}">
                                 <x-far-trash-alt class="icon" />
                             </button>
                         </div>
@@ -37,6 +37,21 @@
                 @endforeach
             </tbody>
         </table>
+
+        <x-modal refs="deleteUser">
+            @section('content')
+            Apakah anda yakin menghapus <span class="text-red-500 font-medium" x-text="deleteUser.name + '?'"></span>
+
+            <form x-bind:action="'{{route('dashboard.user.index') . '/'}}'+deleteUser.id" method="POST">
+                <div class="mt-6 flex justify-center items-center space-x-4">
+                    @method('DELETE')
+                    @csrf
+                    <x-button-submit label="Hapus" />
+                    <button class="btn btn-info w-28" x-on:click="deleteUser = null">Batal</button>
+                </div>
+            </form>
+            @endsection
+        </x-modal>
     </div>
 
     <div class="w-full">

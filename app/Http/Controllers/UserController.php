@@ -83,6 +83,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()
+            ->route('dashboard.user.index')
+            ->with(['message' => 'data pengguna ' . $user->name . ' berhasil dihapus']);
     }
 }

@@ -31,5 +31,6 @@ Route::prefix('dashboard')
                 Route::post('', 'store')->name('dashboard.user.store');
                 Route::get('{user}/ubah', 'edit')->name('dashboard.user.edit');
                 Route::put('{user}', 'update')->name('dashboard.user.update');
+                Route::delete('{user}', 'destroy')->name('dashboard.user.destroy');
             });
     });
