@@ -7,7 +7,7 @@
         <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary">Tambah</a>
     </div>
 
-    <div class="card" x-data="{ deleteUser: null }">
+    <div class="card overflow-auto" x-data="{ deleteUser: null }">
         <table class="table">
             <thead>
                 <th class="text-right w-px">No</th>
