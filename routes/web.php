@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +42,38 @@ Route::prefix('dashboard')
                 Route::delete('{user}', 'destroy')->name('dashboard.user.destroy');
             });
     });
+
+    Route::get('dashboard/satuan', [SatuanController::class, 'halamanSatuan'])
+    ->name('dashboard.satuan.halamanSatuan');
+
+    Route::get('dashboard/satuan/tambah', [SatuanController::class, 'formTambah'])
+    ->name('dashboard.satuan.form-tambah');
+    Route::post('dashboard/satuan/tambah', [SatuanController::class, 'tambah'])
+    ->name('dashboard.satuan.tambah');
+
+    Route::get('dashboard/satuan/{id}/form-edit', [SatuanController::class, 'formEdit'])
+    ->name('dashboard.satuan.form-edit');
+
+    Route::put('dashboard/satuan/{id}/edit', [SatuanController::class, 'edit'])
+    ->name('dashboard.satuan.edit');
+
+    Route::post('dashboard/satuan/{id}/memulihkan', [SatuanController::class, 'memulihkan'])
+    ->name('dashboard.satuan.memulihkan');
+
+    Route::delete('dashboard/satuan/{id}/hapus', [SatuanController::class, 'hapus'])
+    ->name('dashboard.satuan.hapus');
+
+
+    Route::get('dashboard/barang', [BarangController::class, 'halamanBarang'])
+    ->name('dashboard.barang.halamanBarang');
+    
+    Route::get('dashboard/barang/tambah', [BarangController::class, 'formTambah'])
+    ->name('dashboard.barang.form-tambah');
+    Route::post('dashboard/barang/tambah', [BarangController::class, 'tambah'])
+    ->name('dashboard.barang.tambah');
+
+    Route::get('dashboard/barang/{id}/form-edit', [BarangController::class, 'formEdit'])
+    ->name('dashboard.barang.form-edit');
+    Route::PUT('dashboard/barang/{id}/edit', [BarangController::class, 'edit'])
+    ->name('dashboard.satuan.edit');
+    

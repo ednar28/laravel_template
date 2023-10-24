@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -20,15 +22,18 @@ class AuthController extends Controller
      */
     public function attempt(LoginRequest $request)
     {
-        if (Auth::attempt($request->validated())) {
-            $request->session()->regenerate();
+        $validated = $request->validated();
 
-            // TODO CHECK ROLE
-            return redirect()->route('dashboard.user.index');
+        $user = User::where('username', $validated['username'])->first();
+
+        if (is_null($user) || !Hash::check($validated['password'], $user->password)) {
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');    
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        auth()->user($user->iduser);
+
+        return redirect()->route('dashboard.beranda');
     }
 }
