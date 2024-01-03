@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
@@ -45,6 +46,10 @@ Route::prefix('dashboard')
             });
     });
 
+    Route::prefix('pengadaan')->controller(PengadaanController::class)->group(function () {
+        Route::get('', 'list')->name('dashboard.pengadaan.list');
+    });
+
     Route::get('dashboard/satuan', [SatuanController::class, 'halamanSatuan'])
     ->name('dashboard.satuan.halamanSatuan');
 
@@ -65,11 +70,9 @@ Route::prefix('dashboard')
     Route::delete('dashboard/satuan/{id}/hapus', [SatuanController::class, 'hapus'])
     ->name('dashboard.satuan.hapus');
 
-
-
     Route::get('dashboard/barang', [BarangController::class, 'halamanBarang'])
     ->name('dashboard.barang.halamanBarang');
-    
+
     Route::get('dashboard/barang/tambah', [BarangController::class, 'formTambah'])
     ->name('dashboard.barang.form-tambah');
     Route::post('dashboard/barang/tambah', [BarangController::class, 'tambah'])
@@ -86,11 +89,9 @@ Route::prefix('dashboard')
     Route::delete('dashboard/barang/{id}/hapus', [BarangController::class, 'hapus'])
     ->name('dashboard.barang.hapus');
 
-
-
     Route::get('dashboard/vendor', [VendorController::class, 'halamanVendor'])
     ->name('dashboard.vendor.halamanVendor');
-    
+
     Route::get('dashboard/vendor/tambah', [VendorController::class, 'formTambah'])
     ->name('dashboard.vendor.form-tambah');
     Route::post('dashboard/vendor/tambah', [VendorController::class, 'tambah'])
@@ -107,4 +108,3 @@ Route::prefix('dashboard')
     Route::delete('dashboard/vendor/{id}/hapus', [VendorController::class, 'hapus'])
     ->name('dashboard.vendor.hapus');
 
-    
