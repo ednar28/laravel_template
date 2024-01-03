@@ -10,10 +10,11 @@
       @csrf
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         <x-form-input label="Jenis" name="jenis" value="{{$barang->jenis}}" placeholder="Masukkan Jenis" />
-        <x-form-input label="Nama Barang" name="nama" value="{{$barang->nama_barang}}" placeholder="Masukkan Nama Barang" />
+        <x-form-input label="Nama Barang" name="nama" value="{{$barang->nama_barang}}"
+          placeholder="Masukkan Nama Barang" />
         <x-form-input label="Harga" name="harga" value="{{$barang->harga}}" placeholder="Masukkan Harga Barang" />
 
-        </div>
+      </div>
 
       <div class="flex items-center justify-center space-x-4">
         <x-button-submit />
