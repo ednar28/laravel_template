@@ -10,7 +10,7 @@ class BarangController extends Controller
 {
     public function halamanBarang()
     {
-        $barang = DB::select('CALL selectBarangv4()');
+        $barang = DB::select('CALL tampilkan_barang()');
 
         return view('pages.dashboard.barang.halaman-barang', [
             'barang' => $barang,

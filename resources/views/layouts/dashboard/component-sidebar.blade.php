@@ -34,5 +34,11 @@
             <x-fas-box class="w-5 h-5" />
             <div>Vendor</div>
         </a>
+        <a href="{{ route('dashboard.penjualan.halamanPenjualan') }}" @class([ 'sidebar-link' , 'active'=>
+            Route::getCurrentRoute()->getName() === 'dashboard.penjualan.halamanPenjualan',
+            ])>
+            <x-fas-box class="w-5 h-5" />
+            <div>Penjualan</div>
+        </a>
     </div>
 </div>
