@@ -22,4 +22,11 @@ class Barang extends Model
      * @var string
      */
     protected $primaryKey = 'idbarang';
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
 }

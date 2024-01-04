@@ -17,6 +17,13 @@ class Role extends Model
     protected $table = 'role';
 
     /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'idrole';
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

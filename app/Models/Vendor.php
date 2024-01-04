@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Satuan extends Model
+class Vendor extends Model
 {
     use HasFactory;
 
@@ -14,14 +14,14 @@ class Satuan extends Model
      *
      * @var string
      */
-    protected $table = 'satuan';
+    protected $table = 'vendor';
 
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
-    protected $primaryKey = 'iduser';
+    protected $primaryKey = 'idvendor';
 
     /**
      * Indicates if the model should be timestamped.
