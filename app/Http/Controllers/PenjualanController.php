@@ -7,20 +7,33 @@ use Illuminate\Support\Facades\DB;
 
 class PenjualanController extends Controller
 {
-    public function penjualan()
+    /**
+     * Tampilkan halaman list penjualan.
+     */
+    public function halamanPenjualan()
     {
+        $list = DB::table('penjualan')->get();
+        $users = DB::table('users')->whereIn('iduser', $list->pluck('iduser'))->get();
 
-        $vendor = DB::table('penjualan')->get();
-
-
-        return view('pages.dashboard.penjualan.halaman-penjualan');
+        return view('pages.dashboard.penjualan.halaman-penjualan', [
+            'list' => $list,
+            'users' => $users,
+        ]);
     }
 
+    /**
+     * Tampilkan form tambah untuk penjualan.
+     */
     public function formTambah()
     {
-        return view('pages.dashboard.penjualan.form-tambah');
+        $barang = DB::table('barang')->get();
+
+        return view('pages.dashboard.penjualan.form-tambah', ['barang' => $barang]);
     }
 
+    /**
+     * Simpan penjualan.
+     */
     public function tambah(Request $request)
     {
         $validated = $request->validate([
@@ -63,8 +76,5 @@ class PenjualanController extends Controller
         return redirect()
             ->route('dashboard.penjualan.halamanPenjualan')
             ->with(['message' => ' Berhasil Simpan ' . $validated['nama_penjualan']]);
-
     }
-
-
 }

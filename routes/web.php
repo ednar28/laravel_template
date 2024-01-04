@@ -4,9 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengadaanController;
-use App\Http\Controllers\VendorController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,65 +47,70 @@ Route::prefix('dashboard')
             });
     });
 
-    Route::prefix('pengadaan')->controller(PengadaanController::class)->group(function () {
-        Route::get('', 'list')->name('dashboard.pengadaan.list');
-    });
+Route::prefix('pengadaan')->controller(PengadaanController::class)->group(function () {
+    Route::get('', 'list')->name('dashboard.pengadaan.list');
+});
 
-    Route::get('dashboard/satuan', [SatuanController::class, 'halamanSatuan'])
+Route::prefix('penjualan')->controller(PenjualanController::class)->group(function () {
+    Route::get('', 'halamanPenjualan')->name('dashboard.penjualan.halaman-penjualan');
+    Route::get('form-tambah', 'formTambah')->name('dashboard.penjualan.form-tambah');
+    Route::post('tambah', 'tambah')->name('dashboard.penjualan.tambah');
+});
+
+Route::get('dashboard/satuan', [SatuanController::class, 'halamanSatuan'])
     ->name('dashboard.satuan.halamanSatuan');
 
-    Route::get('dashboard/satuan/tambah', [SatuanController::class, 'formTambah'])
+Route::get('dashboard/satuan/tambah', [SatuanController::class, 'formTambah'])
     ->name('dashboard.satuan.form-tambah');
-    Route::post('dashboard/satuan/tambah', [SatuanController::class, 'tambah'])
+Route::post('dashboard/satuan/tambah', [SatuanController::class, 'tambah'])
     ->name('dashboard.satuan.tambah');
 
-    Route::get('dashboard/satuan/{id}/form-edit', [SatuanController::class, 'formEdit'])
+Route::get('dashboard/satuan/{id}/form-edit', [SatuanController::class, 'formEdit'])
     ->name('dashboard.satuan.form-edit');
 
-    Route::put('dashboard/satuan/{id}/edit', [SatuanController::class, 'edit'])
+Route::put('dashboard/satuan/{id}/edit', [SatuanController::class, 'edit'])
     ->name('dashboard.satuan.edit');
 
-    Route::post('dashboard/satuan/{id}/memulihkan', [SatuanController::class, 'memulihkan'])
+Route::post('dashboard/satuan/{id}/memulihkan', [SatuanController::class, 'memulihkan'])
     ->name('dashboard.satuan.memulihkan');
 
-    Route::delete('dashboard/satuan/{id}/hapus', [SatuanController::class, 'hapus'])
+Route::delete('dashboard/satuan/{id}/hapus', [SatuanController::class, 'hapus'])
     ->name('dashboard.satuan.hapus');
 
-    Route::get('dashboard/barang', [BarangController::class, 'halamanBarang'])
+Route::get('dashboard/barang', [BarangController::class, 'halamanBarang'])
     ->name('dashboard.barang.halamanBarang');
 
-    Route::get('dashboard/barang/tambah', [BarangController::class, 'formTambah'])
+Route::get('dashboard/barang/tambah', [BarangController::class, 'formTambah'])
     ->name('dashboard.barang.form-tambah');
-    Route::post('dashboard/barang/tambah', [BarangController::class, 'tambah'])
+Route::post('dashboard/barang/tambah', [BarangController::class, 'tambah'])
     ->name('dashboard.barang.tambah');
 
-    Route::get('dashboard/barang/{id}/form-edit', [BarangController::class, 'formEdit'])
+Route::get('dashboard/barang/{id}/form-edit', [BarangController::class, 'formEdit'])
     ->name('dashboard.barang.form-edit');
-    Route::PUT('dashboard/barang/{id}/edit', [BarangController::class, 'edit'])
+Route::PUT('dashboard/barang/{id}/edit', [BarangController::class, 'edit'])
     ->name('dashboard.barang.edit');
 
-    Route::post('dashboard/barang/{id}/memulihkan', [BarangController::class, 'memulihkan'])
+Route::post('dashboard/barang/{id}/memulihkan', [BarangController::class, 'memulihkan'])
     ->name('dashboard.barang.memulihkan');
 
-    Route::delete('dashboard/barang/{id}/hapus', [BarangController::class, 'hapus'])
+Route::delete('dashboard/barang/{id}/hapus', [BarangController::class, 'hapus'])
     ->name('dashboard.barang.hapus');
 
-    Route::get('dashboard/vendor', [VendorController::class, 'halamanVendor'])
+Route::get('dashboard/vendor', [VendorController::class, 'halamanVendor'])
     ->name('dashboard.vendor.halamanVendor');
 
-    Route::get('dashboard/vendor/tambah', [VendorController::class, 'formTambah'])
+Route::get('dashboard/vendor/tambah', [VendorController::class, 'formTambah'])
     ->name('dashboard.vendor.form-tambah');
-    Route::post('dashboard/vendor/tambah', [VendorController::class, 'tambah'])
+Route::post('dashboard/vendor/tambah', [VendorController::class, 'tambah'])
     ->name('dashboard.vendor.tambah');
 
-    Route::get('dashboard/vendor/{id}/form-edit', [VendorController::class, 'formEdit'])
+Route::get('dashboard/vendor/{id}/form-edit', [VendorController::class, 'formEdit'])
     ->name('dashboard.vendor.form-edit');
-    Route::PUT('dashboard/vendor/{id}/edit', [VendorController::class, 'edit'])
+Route::PUT('dashboard/vendor/{id}/edit', [VendorController::class, 'edit'])
     ->name('dashboard.vendor.edit');
 
-    Route::post('dashboard/vendor/{id}/memulihkan', [VendorController::class, 'memulihkan'])
+Route::post('dashboard/vendor/{id}/memulihkan', [VendorController::class, 'memulihkan'])
     ->name('dashboard.vendor.memulihkan');
 
-    Route::delete('dashboard/vendor/{id}/hapus', [VendorController::class, 'hapus'])
+Route::delete('dashboard/vendor/{id}/hapus', [VendorController::class, 'hapus'])
     ->name('dashboard.vendor.hapus');
-
