@@ -28,6 +28,7 @@
                     <td class="text-left">
                         {{$brg->nama_satuan}}
                     </td>
+                    <td class="text-left">
                     <td class="p-2 text-left">{{$brg->deleted_at ? 'Tidak Aktif' : 'Aktif'}}</td>
                     <td class="w-px whitespace-nowrap">
                         <div class="flex items-center space-x-2">
