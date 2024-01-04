@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PenerimaanController;
 use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SatuanController;
@@ -47,15 +48,33 @@ Route::prefix('dashboard')
             });
     });
 
-Route::prefix('pengadaan')->controller(PengadaanController::class)->group(function () {
-    Route::get('', 'list')->name('dashboard.pengadaan.list');
-});
+Route::prefix('pengadaan')
+    ->controller(PengadaanController::class)
+    ->group(function () {
+        Route::get('list', 'list')->name('dashboard.pengadaan.halamanPengadaan');
+        Route::get('tambah', 'formTambah')->name('dashboard.pengadaan.form-tambah');
+        Route::post('tambah', 'tambah')->name('dashboard.pengadaan.tambah');
+    });
 
-Route::prefix('penjualan')->controller(PenjualanController::class)->group(function () {
-    Route::get('', 'halamanPenjualan')->name('dashboard.penjualan.halaman-penjualan');
-    Route::get('form-tambah', 'formTambah')->name('dashboard.penjualan.form-tambah');
-    Route::post('tambah', 'tambah')->name('dashboard.penjualan.tambah');
-});
+
+Route::prefix('penerimaan')
+    ->controller(PenerimaanController::class)
+    ->group(function () {
+        Route::get('', 'penerimaan')->name('dashboard.penerimaan.halamanPenerimaan');
+        Route::get('tambah', 'formTambah')->name('dashboard.penerimaan.form-tambah');
+        Route::post('tambah', 'tambah')->name('dashboard.penerimaan.tambah');
+        Route::get('{id}/detail', 'detail')->name('dashboard.penerimaan.detail');
+    });
+
+
+Route::prefix('penjualan')
+    ->controller(PenjualanController::class)
+    ->group(function () {
+        Route::get('', 'penjualan')->name('dashboard.penjualan.halamanPenjualan');
+        Route::get('tambah', 'formTambah')->name('dashboard.penjualan.form-tambah');
+        Route::post('tambah', 'tambah')->name('dashboard.penjualan.tambah');
+        Route::get('{id}/detail', 'detail')->name('dashboard.penjualan.detail');
+    });
 
 Route::get('dashboard/satuan', [SatuanController::class, 'halamanSatuan'])
     ->name('dashboard.satuan.halamanSatuan');
