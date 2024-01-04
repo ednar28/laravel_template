@@ -13,6 +13,7 @@
                 <th class="w-px text-right whitespace-nowrap">id barang</th>
                 <th class="text-left">jenis</th>
                 <th class="text-left">nama barang</th>
+                <th class="text-left">stok</th>
                 <th class="text-left">satuan</th>
                 <th class="text-left">status</th>
             </thead>
@@ -23,9 +24,11 @@
                     <td class="w-px text-right whitespace-nowrap">{{$brg->idbarang}}</td>
                     <td class="text-left">{{$brg->jenis}}</td>
                     <td class="text-left">{{$brg->nama}}</td>
+                    <td class="text-left">{{$brg->stok}}</td>
                     <td class="text-left">
                         {{$brg->nama_satuan}}
                     </td>
+                    <td class="text-left">
                     <td class="p-2 text-left">{{$brg->deleted_at ? 'Tidak Aktif' : 'Aktif'}}</td>
                     <td class="w-px whitespace-nowrap">
                     <div class="flex items-center space-x-2">
