@@ -31,7 +31,7 @@ class PenjualanController extends Controller
 
         $idpenjualan = DB::table('penjualan')->insertGetId([
             'iduser' => auth()->id(),
-            'aub_total' => 0,
+            'sub_total' => 0,
             'ppn' => 0,
             'total_nilai' => 0,
             'created_at' => now(),
